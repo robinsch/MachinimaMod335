@@ -303,7 +303,7 @@
     <CheckButton name="$parentTerrainCulling" inherits="InterfaceOptionsCheckButtonTemplate">
       <Anchors>
         <Anchor point="LEFT" relativeTo="$parentWMOCulling">
-          <Offset x="128" y="0"/>
+          <Offset x="0" y="-25"/>
         </Anchor>
       </Anchors>
       <Scripts>
@@ -317,7 +317,7 @@
     <CheckButton name="$parentEntityCulling" inherits="InterfaceOptionsCheckButtonTemplate">
       <Anchors>
         <Anchor point="LEFT" relativeTo="$parentTerrainCulling">
-          <Offset x="128" y="0"/>
+          <Offset x="0" y="-25"/>
         </Anchor>
       </Anchors>
       <Scripts>
@@ -331,7 +331,7 @@
         <CheckButton name="$parentEntityShadows" inherits="InterfaceOptionsCheckButtonTemplate">
       <Anchors>
         <Anchor point="LEFT" relativeTo="$parentEntityCulling">
-          <Offset x="128" y="0"/>
+          <Offset x="0" y="-45"/>
         </Anchor>
       </Anchors>
       <Scripts>
@@ -342,20 +342,34 @@
         </OnLoad>
       </Scripts>
     </CheckButton>
-    <CheckButton name="$parentStaticLOD" inherits="InterfaceOptionsCheckButtonTemplate">
+    <CheckButton name="$parentAnimateClouds" inherits="InterfaceOptionsCheckButtonTemplate">
       <Anchors>
-        <Anchor point="LEFT" relativeTo="$parentEntityShadows">
+        <Anchor point="LEFT" relativeTo="$parentWMOCulling">
           <Offset x="128" y="0"/>
         </Anchor>
       </Anchors>
       <Scripts>
         <OnLoad>
           self.type = CONTROLTYPE_CHECKBOX;
-          self.cvar = "staticLOD";
+          self.cvar = "animateClouds";
           BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
         </OnLoad>
       </Scripts>
     </CheckButton>
+	<CheckButton name="$parentLODObjectCull" inherits="InterfaceOptionsCheckButtonTemplate">
+		<Anchors>
+			<Anchor point="LEFT" relativeTo="$parentAnimateClouds">
+				<Offset x="0" y="-25"/>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.type = CONTROLTYPE_CHECKBOX;
+				self.cvar = "lodObjectCull";
+				BlizzardOptionsPanel_RegisterControl(self, self:GetParent());
+			</OnLoad>
+		</Scripts>
+	  </CheckButton>
     <CheckButton name="$parentLightCulling" inherits="InterfaceOptionsCheckButtonTemplate">
       <Anchors>
         <Anchor point="LEFT" relativeTo="$parentWorldLightQuadraticAttenuation" relativePoint="LEFT">
@@ -370,6 +384,7 @@
         </OnLoad>
       </Scripts>
     </CheckButton>
+	  
     <CheckButton name="$parentLightLimitFix" inherits="InterfaceOptionsCheckButtonTemplate">
       <Anchors>
         <Anchor point="RIGHT" relativeTo="$parentLightCulling">
